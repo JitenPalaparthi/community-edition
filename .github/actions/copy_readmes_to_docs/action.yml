@@ -1,0 +1,11 @@
+name: 'copy readmes to docs'
+description: 'Copy package readmes to docs'
+inputs:
+  repo-token:
+    description: 'an api token'
+    required: true
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.repo-token }}

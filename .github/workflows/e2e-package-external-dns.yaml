@@ -67,6 +67,12 @@ jobs:
             echo "#####"
             echo ""
             cat /tmp/standalone.log
+            echo ""
+            echo "#####"
+            echo "docker config file"
+            echo "#####"
+            echo ""
+            cat /etc/docker/daemon.json
             bootstrapclustername=$(kind get clusters | grep tkg) || true
             if [[ -n $bootstrapclustername ]]; then
               kind get kubeconfig --name $bootstrapclustername > /tmp/bootstrap.kubeconfig || true
@@ -113,7 +119,7 @@ jobs:
             df -h
             echo "RAM available for Runner - "
             free -h
-            sleep 5
+            sleep 10
           done
           kill $pid
 

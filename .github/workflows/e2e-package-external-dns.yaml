@@ -102,6 +102,12 @@ jobs:
               echo "#####"
               echo ""
               docker exec $container /bin/bash -c "crictl --runtime-endpoint unix:////var/run/containerd/containerd.sock ps -a | grep -v CONTAINER | awk '{print $1}' | xargs -n1 crictl --runtime-endpoint unix:////var/run/containerd/containerd.sock logs -t" || true
+              echo ""
+              echo "#####"
+              echo "standalone cluster control plane kubelet logs"
+              echo "#####"
+              echo ""
+              docker exec $container /bin/bash -c "journalctl -u kubelet" || true
             fi
             echo "Disk available for Runner - "
             df -h

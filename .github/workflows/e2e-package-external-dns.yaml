@@ -21,13 +21,20 @@ jobs:
       - name: Check out code into the Go module directory
         uses: actions/checkout@v1
 
-      # - name: Cleaning up Github Actions runner
-      #   run: |
-      #     df -h
-      #     sudo rm -rf /usr/local/lib/android
-      #     sudo rm -rf /usr/share/dotnet
-      #     sudo rm -rf "/usr/local/share/boost"
-      #     df -h
+      - name: Cleaning up Github Actions runner
+        run: |
+          df -h
+          sudo rm -rf /usr/local/lib/android
+          sudo rm -rf /usr/share/dotnet
+          sudo rm -rf "/usr/local/share/boost"
+          echo "Disk available for Runner - "
+          df -h
+          echo "RAM available for Runner - "
+          free -h
+          docker_engine_mem=$(docker system info -f "{{.MemTotal}}")
+          echo "RAM available for Docker Engine - ${docker_engine_mem}"
+          docker_engine_cpu=$(docker system info -f "{{.NCPU}}")
+          echo "Number of CPUs available for Docker Engine - ${docker_engine_cpu}"
 
       - name: Install depenedencies
         run: |
@@ -76,6 +83,11 @@ jobs:
               echo ""
               kubectl --kubeconfig /tmp/bootstrap.kubeconfig logs -l cluster.x-k8s.io/provider=infrastructure-docker -n capd-system -c manager || true
             fi
+            echo ""
+            echo "#####"
+            echo "docker containers"
+            echo "#####"
+            docker ps
             container=$(docker ps | grep -e "my.*control" | awk '{ print $1}') || true
             if [[ -n $container ]]; then
               echo ""
@@ -91,6 +103,10 @@ jobs:
               echo ""
               docker exec $container /bin/bash -c "crictl --runtime-endpoint unix:////var/run/containerd/containerd.sock ps -a | grep -v CONTAINER | awk '{print $1}' | xargs -n1 crictl --runtime-endpoint unix:////var/run/containerd/containerd.sock logs -t" || true
             fi
+            echo "Disk available for Runner - "
+            df -h
+            echo "RAM available for Runner - "
+            free -h
             sleep 5
           done
           kill $pid

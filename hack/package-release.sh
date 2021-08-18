@@ -58,7 +58,7 @@ cp -f "${ROOT_FRAMEWORK_ARTFACTS_DIR}/linux/amd64/cli/core/${FRAMEWORK_BUILD_VER
 # cp -f "${ROOT_FRAMEWORK_ARTFACTS_DIR}/linux/amd64/cli/login/${FRAMEWORK_BUILD_VERSION}/tanzu-login-linux_amd64" "${PACKAGE_LINUX_AMD64_DIR}/bin/tanzu-plugin-login"
 # cp -f "${ROOT_FRAMEWORK_ARTFACTS_DIR}/linux/amd64/cli/package/${FRAMEWORK_BUILD_VERSION}/tanzu-package-linux_amd64" "${PACKAGE_LINUX_AMD64_DIR}/bin/tanzu-plugin-package"
 # cp -f "${ROOT_FRAMEWORK_ARTFACTS_DIR}/linux/amd64/cli/pinniped-auth/${FRAMEWORK_BUILD_VERSION}/tanzu-pinniped-auth-linux_amd64" "${PACKAGE_LINUX_AMD64_DIR}/bin/tanzu-plugin-pinniped-auth"
-cp -f "${ROOT_FRAMEWORK_ARTFACTS_DIR}/linux/amd64/cli/management-cluster/${FRAMEWORK_BUILD_VERSION}/tanzu-management-cluster-linux_amd64" "${PACKAGE_LINUX_AMD64_DIR}/bin/tanzu-plugin-management-cluster"
+# cp -f "${ROOT_FRAMEWORK_ARTFACTS_DIR}/linux/amd64/cli/management-cluster/${FRAMEWORK_BUILD_VERSION}/tanzu-management-cluster-linux_amd64" "${PACKAGE_LINUX_AMD64_DIR}/bin/tanzu-plugin-management-cluster"
 
 # cp -f "${ROOT_FRAMEWORK_ARTFACTS_ADMIN_DIR}/linux/amd64/cli/builder/${FRAMEWORK_BUILD_VERSION}/tanzu-builder-linux_amd64" "${PACKAGE_LINUX_AMD64_DIR}/bin/tanzu-plugin-builder"
 

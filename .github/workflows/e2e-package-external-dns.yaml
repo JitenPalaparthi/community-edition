@@ -57,6 +57,7 @@ jobs:
 
       - name: Create a standlone cluster
         run: |
+          touch /tmp/standalone.log
           CLUSTER_PLAN=dev CLUSTER_NAME=my-cluster tanzu standalone-cluster create my-cluster -i docker -v 10 &> /tmp/standalone.log &
           pid=$!
           for ((i=1;i<=100;i++))

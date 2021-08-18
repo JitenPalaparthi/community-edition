@@ -17,6 +17,7 @@ require (
 
 replace (
 	github.com/googleapis/gnostic => github.com/googleapis/gnostic v0.3.1 // indirect
+	github.com/vmware-tanzu/tanzu-framework => github.com/christianang/tanzu-framework v1.4.0-pre-alpha-2.0.20210818173614-3c9d50b173be
 	k8s.io/api => k8s.io/api v0.17.11
 	k8s.io/apimachinery => k8s.io/apimachinery v0.17.11
 	k8s.io/client-go => k8s.io/client-go v0.17.11

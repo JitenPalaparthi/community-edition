@@ -1,20 +1,20 @@
 apiVersion: data.packaging.carvel.dev/v1alpha1
 kind: Package
 metadata:
-  name: cert-manager.community.tanzu.vmware.com.1.4.0
+  name: cert-manager.community.tanzu.vmware.com.1.4.3
   namespace: cert-manager
 spec:
   refName: cert-manager.community.tanzu.vmware.com
-  version: 1.4.0
+  version: 1.4.3
   releasedAt: 2021-06-15T18:00:00Z
-  releaseNotes: "cert-manager 1.4.0 https://github.com/jetstack/cert-manager/releases/tag/v1.4.0"
+  releaseNotes: "cert-manager 1.4.3 https://github.com/jetstack/cert-manager/releases/tag/v1.4.3"
   licenses:
     - "Apache 2.0"
   template:
     spec:
       fetch:
         - imgpkgBundle:
-            image: projects.registry.vmware.com/tce/cert-manager@sha256:8e632e0af866d71bd85a6259ad141694c0161942d83eff237e9307b3bddfa5e0
+            image: projects.registry.vmware.com/tce/cert-manager@sha256:d0d5fe7878c1c57c20cf24886f6c92744e10182a8162ea672d1304b8f7ce771c
       template:
         - ytt:
             paths:
@@ -28,7 +28,7 @@ spec:
   capacityRequirementsDescription: "Varies significantly based on number of Certificate objects"
   valuesSchema:
     openAPIv3:
-      title: cert-manager.community.tanzu.vmware.com.1.4.0 values schema
+      title: cert-manager.community.tanzu.vmware.com.1.4.3 values schema
       examples:
         - namespace: tanzu-certificates
       properties:

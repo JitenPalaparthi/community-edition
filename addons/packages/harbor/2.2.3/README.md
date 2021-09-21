@@ -84,7 +84,7 @@ The Harbor UI is exposed via the Envoy service load balancer that is running in 
    kubectl get svc envoy -n tanzu-system-ingress -o jsonpath='{.status.loadBalancer.ingress[0]}'
    ```
 
-   On **vSphere without NSX Advanced Load Balancer (ALB)**, the Envoy service is exposed via NodePort instead of LoadBalancer, so the above output will be empty, and you can use the IP address of any worker node in the workload cluster instead. On **Amazon EC2**, it has a FQDN similar to `a82ebae93a6fe42cd66d9e145e4fb292-1299077984.us-west-2.elb.amazonaws.com`.
+   On **vSphere without NSX Advanced Load Balancer (ALB)**, the Envoy service is exposed via NodePort instead of LoadBalancer, so the above output will be empty, and you can use the IP address of any worker node in the workload cluster instead. On **Amazon Web Services (AWS)**, it has a FQDN similar to `a82ebae93a6fe42cd66d9e145e4fb292-1299077984.us-west-2.elb.amazonaws.com`.
    On **vSphere with NSX ALB** and **Azure**, the Envoy service has a Load Balancer IP address similar to `20.54.226.44`.
 
 1. Map the address of the Envoy service load balancer to the hostname of the Harbor service.
@@ -97,7 +97,7 @@ The Harbor UI is exposed via the Envoy service load balancer that is running in 
 
      On Windows machines, the equivalent to `/etc/hosts/` is `C:\Windows\System32\Drivers\etc\hosts`.
 
-   * **Amazon EC2 or Azure**: If you deployed Harbor on a workload cluster that is running on Amazon EC2 or Azure, you must create two DNS `CNAME` records (on Amazon EC2) or two DNS `A` records (on Azure) for the Harbor hostnames on a DNS server on the Internet.
+   * **AWS or Azure**: If you deployed Harbor on a workload cluster that is running on AWS or Azure, you must create two DNS `CNAME` records (on AWS) or two DNS `A` records (on Azure) for the Harbor hostnames on a DNS server on the Internet.
       * One record for the Harbor hostname, for example, `harbor.yourdomain.com`, that you configured in `harbor.community.tanzu.vmware.com-values.yaml`, that points to the FQDN or IP of the Envoy service load balancer.
       * Another record for the Notary service that is running in Harbor, for example, `notary.harbor.yourdomain.com`, that points to the FQDN or IP of the Envoy service load balancer.
 
